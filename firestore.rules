@@ -1,0 +1,227 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    /* -------------------- Helpers -------------------- */
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isAdmin() {
+      return isSignedIn() && request.auth.token.admin == true;
+    }
+
+    function isOwnerId(uid) {
+      return isSignedIn() && request.auth.uid == uid;
+    }
+
+    // Documento existente pertence ao usuário autenticado
+    function isOwnerDoc() {
+      return isSignedIn() && resource.data.userId == request.auth.uid;
+    }
+
+    // Novo documento (create/update) pertence ao usuário autenticado
+    function isOwnerNew() {
+      return isSignedIn() && request.resource.data.userId == request.auth.uid;
+    }
+
+    // Garante userId imutável em updates
+    function sameUserIdOnUpdate() {
+      return request.method != 'update'
+        || (resource.data.userId == request.resource.data.userId
+            && resource.data.userId == request.auth.uid);
+    }
+
+    // Ref check: account pertence ao usuário
+    function accountBelongsToUser(accountId) {
+      return accountId != null
+        && exists(/databases/$(database)/documents/accounts/$(accountId))
+        && get(/databases/$(database)/documents/accounts/$(accountId)).data.userId == request.auth.uid;
+    }
+
+    // Ref check: investment account pertence ao usuário
+    function invAccountBelongsToUser(invAccountId) {
+      return invAccountId != null
+        && exists(/databases/$(database)/documents/investment_accounts/$(invAccountId))
+        && get(/databases/$(database)/documents/investment_accounts/$(invAccountId)).data.userId == request.auth.uid;
+    }
+
+    // Ref check: points program pertence ao usuário
+    function pointsProgramBelongsToUser(programId) {
+      return programId != null
+        && exists(/databases/$(database)/documents/points_programs/$(programId))
+        && get(/databases/$(database)/documents/points_programs/$(programId)).data.userId == request.auth.uid;
+    }
+
+    /* -------------------- Users -------------------- */
+    match /users/{uid} {
+      allow create: if isOwnerId(uid);                // userId == auth.uid
+      allow read, update: if isOwnerId(uid);
+      allow delete: if false;                         // opcional: nunca deletar user
+    }
+
+    /* -------------------- Accounts (carteiras/contas) -------------------- */
+    match /accounts/{id} {
+      allow create: if isOwnerNew();
+      allow read: if isOwnerDoc();
+      allow update: if isOwnerDoc() && isOwnerNew() && sameUserIdOnUpdate();
+      allow delete: if isOwnerDoc();
+    }
+
+    /* -------------------- Transactions (inclui parceladas) -------------------- */
+    match /transactions/{id} {
+      // CREATE: precisa pertencer ao usuário e referenciar uma account do usuário
+      allow create: if isOwnerNew()
+        && accountBelongsToUser(request.resource.data.accountId);
+
+      // READ: só o dono
+      allow read: if isOwnerDoc();
+
+      // UPDATE: dono, userId imutável e conta referenciada continua do usuário
+      allow update: if isOwnerDoc()
+        && isOwnerNew()
+        && sameUserIdOnUpdate()
+        && accountBelongsToUser(request.resource.data.accountId);
+
+      allow delete: if isOwnerDoc();
+    }
+
+    /* -------------------- Installment Groups (opcional) -------------------- */
+    match /installment_groups/{id} {
+      allow create: if isOwnerNew();
+      allow read: if isOwnerDoc();
+      allow update: if isOwnerDoc() && isOwnerNew() && sameUserIdOnUpdate();
+      allow delete: if isOwnerDoc();
+    }
+
+    /* -------------------- Categories / Budgets / Goals / Insights -------------------- */
+    match /categories/{id} {
+      allow create: if isOwnerNew();
+      allow read: if isOwnerDoc();
+      allow update: if isOwnerDoc() && isOwnerNew() && sameUserIdOnUpdate();
+      allow delete: if isOwnerDoc();
+    }
+
+    match /budgets/{id} {
+      allow create: if isOwnerNew();
+      allow read: if isOwnerDoc();
+      allow update: if isOwnerDoc() && isOwnerNew() && sameUserIdOnUpdate();
+      allow delete: if isOwnerDoc();
+    }
+
+    match /goals/{id} {
+      allow create: if isOwnerNew();
+      allow read: if isOwnerDoc();
+      allow update: if isOwnerDoc() && isOwnerNew() && sameUserIdOnUpdate();
+      allow delete: if isOwnerDoc();
+    }
+
+    match /insights/{id} {
+      allow create: if isOwnerNew();
+      allow read: if isOwnerDoc();
+      allow update: if isOwnerDoc() && isOwnerNew() && sameUserIdOnUpdate();
+      allow delete: if isOwnerDoc();
+    }
+
+    /* -------------------- AI chat (sessions & messages) -------------------- */
+    match /ai_sessions/{id} {
+      allow create: if isOwnerNew();
+      allow read: if isOwnerDoc();
+      allow update: if isOwnerDoc() && isOwnerNew() && sameUserIdOnUpdate();
+      allow delete: if isOwnerDoc();
+    }
+
+    match /ai_messages/{id} {
+      allow create: if isOwnerNew();
+      allow read: if isOwnerDoc();
+      allow update: if isOwnerDoc() && isOwnerNew() && sameUserIdOnUpdate();
+      allow delete: if isOwnerDoc();
+    }
+
+    /* -------------------- Investments -------------------- */
+    // Contas de investimento
+    match /investment_accounts/{id} {
+      allow create: if isOwnerNew();
+      allow read: if isOwnerDoc();
+      allow update: if isOwnerDoc() && isOwnerNew() && sameUserIdOnUpdate();
+      allow delete: if isOwnerDoc();
+    }
+
+    // Posições (snapshot agregado)
+    match /investment_positions/{id} {
+      allow create: if isOwnerNew()
+        && invAccountBelongsToUser(request.resource.data.invAccountId);
+      allow read: if isOwnerDoc();
+      allow update: if isOwnerDoc()
+        && isOwnerNew()
+        && sameUserIdOnUpdate()
+        && invAccountBelongsToUser(request.resource.data.invAccountId);
+      allow delete: if isOwnerDoc();
+    }
+
+    // Movimentações
+    match /investment_transactions/{id} {
+      allow create: if isOwnerNew()
+        && invAccountBelongsToUser(request.resource.data.invAccountId);
+      allow read: if isOwnerDoc();
+      allow update: if isOwnerDoc()
+        && isOwnerNew()
+        && sameUserIdOnUpdate()
+        && invAccountBelongsToUser(request.resource.data.invAccountId);
+      allow delete: if isOwnerDoc();
+    }
+
+    // Rendimentos / proventos
+    match /investment_earnings/{id} {
+      allow create: if isOwnerNew()
+        && invAccountBelongsToUser(request.resource.data.invAccountId);
+      allow read: if isOwnerDoc();
+      allow update: if isOwnerDoc()
+        && isOwnerNew()
+        && sameUserIdOnUpdate()
+        && invAccountBelongsToUser(request.resource.data.invAccountId);
+      allow delete: if isOwnerDoc();
+    }
+
+    /* -------------------- Points (loyalty miles/pontos) -------------------- */
+    // Cadastro do usuário em programas
+    match /points_programs/{id} {
+      allow create: if isOwnerNew();
+      allow read: if isOwnerDoc();
+      allow update: if isOwnerDoc() && isOwnerNew() && sameUserIdOnUpdate();
+      allow delete: if isOwnerDoc();
+    }
+
+    // Saldos/lotes com expiração
+    match /points_balances/{id} {
+      allow create: if isOwnerNew()
+        && pointsProgramBelongsToUser(request.resource.data.programId);
+      allow read: if isOwnerDoc();
+      allow update: if isOwnerDoc()
+        && isOwnerNew()
+        && sameUserIdOnUpdate()
+        && pointsProgramBelongsToUser(request.resource.data.programId);
+      allow delete: if isOwnerDoc();
+    }
+
+    // Operações (earn, redeem, transfer)
+    match /points_operations/{id} {
+      allow create: if isOwnerNew()
+        && pointsProgramBelongsToUser(request.resource.data.programId);
+      allow read: if isOwnerDoc();
+      allow update: if isOwnerDoc()
+        && isOwnerNew()
+        && sameUserIdOnUpdate()
+        && pointsProgramBelongsToUser(request.resource.data.programId);
+      allow delete: if isOwnerDoc();
+    }
+
+    // Ofertas de pontos (catálogo global)
+    // - leitura pública (pode exibir na UI sem login se quiser)
+    // - escrita apenas por admin (claim custom)
+    match /points_offers/{id} {
+      allow read: if true;
+      allow create, update, delete: if isAdmin();
+    }
+  }
+}

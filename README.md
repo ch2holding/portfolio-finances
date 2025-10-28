@@ -50,6 +50,12 @@ O **Finance AI** é uma plataforma completa de controle financeiro pessoal com s
 
 ---
 
+## Referencias
+
+📚 Documentação de Arquitetura → ver [ARCHITECTURE.md](./docs/ARCHITECTURE.md)
+
+---
+
 ## 🔧 Funcionalidades confirmadas (MVP+)
 
 ✅ Controle financeiro completo  
@@ -115,5 +121,5 @@ Este projeto é **open source** sob licença MIT – uso livre e educativo.
 ---
 
 ### ✨ Autor
-Desenvolvido por **[Seu Nome]**  
+Desenvolvido por **Nelson Christovam Neto**
 Portfólio profissional com foco em **arquitetura, escalabilidade e IA aplicada**.  

@@ -1,0 +1,37 @@
+import { z } from 'zod';
+import {
+  accountTypeEnum,
+  cardBrandEnum,
+  transactionTypeEnum,
+  installmentStatusEnum,
+} from './enums';
+import { uidSchema, tsSchema, centsSchema } from './common.schema';
+
+export const createTransactionSchema = z.object({
+  userId: uidSchema,
+  accountId: z.string().min(1),
+  accountType: accountTypeEnum,
+  cardBrand: cardBrandEnum.optional(),
+
+  date: tsSchema,
+  description: z.string().min(1),
+  merchant: z.string().optional(),
+  amount: centsSchema,
+  type: transactionTypeEnum,
+  categoryId: z.string().optional(),
+  tags: z.array(z.string()).optional(),
+
+  installmentGroupId: z.string().optional(),
+  installmentNumber: z.number().int().min(1).optional(),
+  installmentCount: z.number().int().min(1).optional(),
+  purchaseDate: tsSchema.optional(),
+  dueDate: tsSchema.optional(),
+  statementMonth: z.string().regex(/^\d{6}$/, 'Use yyyymm').optional(),
+  interestAmount: z.number().int().optional(),
+  feesAmount: z.number().int().optional(),
+  status: installmentStatusEnum.optional(),
+});
+
+export const updateTransactionSchema = createTransactionSchema
+  .partial()
+  .extend({ id: z.string().min(1), userId: uidSchema });
