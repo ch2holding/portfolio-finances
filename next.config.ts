@@ -11,7 +11,7 @@ const nextConfig: NextConfig = {
         pathname: "/a/**",
       },
     ],
-  }
+  },
 };
 
 const withNextIntl = createNextIntlPlugin();
