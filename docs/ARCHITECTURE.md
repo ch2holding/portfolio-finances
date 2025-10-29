@@ -249,17 +249,17 @@ Cada módulo contém:
 src/domain/transactions/
     |
     ├── dto/
-        └──  transaction.dto.ts
+    |   └──  transaction.dto.ts
     ├── schemas/
-        └──  transaction.schema.ts
+    |   └──  transaction.schema.ts
     ├── types/
-        └── transaction.ts
+    |   └── transaction.ts
     ├── repositories/
-        └── transaction.repository.ts
+    |   └── transaction.repository.ts
     ├── services/
-        ├── transaction.service.ts
-        ├── installment.engine.ts ← cálculo de parcelas
-        └── statement.engine.ts ← fechamento de fatura
+    |   ├── transaction.service.ts
+    |   ├── installment.engine.ts ← cálculo de parcelas
+    |   └── statement.engine.ts ← fechamento de fatura
     └── api/
         └── handlers.ts ← usado pelas rotas /api/transactions
 ```
