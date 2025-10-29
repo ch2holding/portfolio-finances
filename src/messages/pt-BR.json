@@ -1,0 +1,25 @@
+{
+  "localeSwitcher": {
+    "en": "Inglês",
+    "pt-BR": "Português"
+  },
+  "common": {
+    "save": "Salvar",
+    "cancel": "Cancelar",
+    "status": {
+      "label": "Status",
+      "online": "Online",
+      "offline": "Offline",
+      "active": "Ativo",
+      "inactive": "Inativo"
+    }
+  },
+  "dashboard": {
+    "title": "Meu Dashboard",
+    "welcome": "Bem-vindo ao Dashboard!",
+    "memberSince": "Membro desde",
+    "lastLogin": "Último acesso",
+    "now": "Agora",
+    "sessionInfo": "Sua sessão está protegida e criptografada"
+  }
+}
