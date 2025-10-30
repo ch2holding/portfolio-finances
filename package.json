@@ -16,7 +16,10 @@
     "fix": "biome check --write .",
     "fix:format": "biome format --write .",
     "fix:lint": "biome lint --write .",
-    "type-check": "tsc --noEmit"
+    "type-check": "tsc --noEmit",
+    "seed:firestore": "node scripts/seed-firestore.js",
+    "deploy:rules": "firebase deploy --only firestore:rules",
+    "deploy:indexes": "firebase deploy --only firestore:indexes"
   },
   "dependencies": {
     "@radix-ui/react-dropdown-menu": "^2.1.16",
