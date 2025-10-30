@@ -20,10 +20,14 @@
       "recommended": true,
       "suspicious": {
         "noUnknownAtRules": "off",
-        "noArrayIndexKey": "off"
+        "noArrayIndexKey": "off",
+        "noAssignInExpressions": "off"
       },
       "correctness": {
         "noUnusedVariables": "error"
+      },
+      "security": {
+        "noDangerouslySetInnerHtml": "off"
       },
       "a11y": {
         "useValidAnchor": "off"
