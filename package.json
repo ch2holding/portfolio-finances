@@ -19,7 +19,12 @@
     "type-check": "tsc --noEmit",
     "seed:firestore": "node scripts/seed-firestore.js",
     "deploy:rules": "firebase deploy --only firestore:rules",
-    "deploy:indexes": "firebase deploy --only firestore:indexes"
+    "deploy:indexes": "firebase deploy --only firestore:indexes",
+    "analyze": "set ANALYZE=true && pnpm build",
+    "analyze:server": "set ANALYZE=true && set BUNDLE_ANALYZE=server && pnpm build",
+    "analyze:client": "set ANALYZE=true && set BUNDLE_ANALYZE=client && pnpm build",
+    "analyze:both": "set ANALYZE=true && set BUNDLE_ANALYZE=both && pnpm build",
+    "analyze:report": "node scripts/analyze-bundle.js"
   },
   "dependencies": {
     "@radix-ui/react-dropdown-menu": "^2.1.16",
@@ -44,6 +49,7 @@
     "@biomejs/biome": "2.2.0",
     "@commitlint/cli": "^20.1.0",
     "@commitlint/config-conventional": "^20.0.0",
+    "@next/bundle-analyzer": "^16.0.1",
     "@tailwindcss/postcss": "^4",
     "@types/js-cookie": "^3.0.6",
     "@types/node": "^20",

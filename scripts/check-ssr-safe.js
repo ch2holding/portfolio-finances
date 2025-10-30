@@ -1,10 +1,3 @@
-#!/usr/bin/env node
-
-/**
- * Script customizado para validar SSR Safe no domain layer
- * Bloqueia uso de APIs do browser (window, document, localStorage) em src/domain/
- */
-
 const fs = require("node:fs");
 const path = require("node:path");
 
@@ -24,7 +17,6 @@ function checkFile(filePath) {
 
   lines.forEach((line, index) => {
     RESTRICTED_GLOBALS.forEach((global) => {
-      // Regex para detectar uso do global (não em strings ou comentários)
       const regex = new RegExp(`\\b${global}\\b(?!['":])`);
 
       if (
