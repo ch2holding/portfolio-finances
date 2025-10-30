@@ -1,10 +1,6 @@
 import type { DefaultSession, NextAuthOptions } from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
 
-/**
- * Augment NextAuth types to include `id` on the user object inside Session and User,
- * and to allow storing `id` on the JWT token.
- */
 declare module "next-auth" {
   interface Session {
     user: {
@@ -47,7 +43,6 @@ export const authOptions: NextAuthOptions = {
   },
 
   callbacks: {
-    // Callback executado quando o usuário tenta fazer login
     async signIn({ user, account, profile, email, credentials }) {
       if (process.env.NEXTAUTH_DEBUG === "true") {
         console.log("========== SIGNIN CALLBACK ==========");
@@ -58,13 +53,9 @@ export const authOptions: NextAuthOptions = {
         console.log("Profile:", profile);
         console.log("=====================================");
       }
-
-      // IMPORTANTE: Retornar true permite o login
-      // Retornar false ou string redireciona para erro
       return true;
     },
 
-    // Callback do JWT
     async jwt({ token, user, account, profile }) {
       if (process.env.NEXTAUTH_DEBUG === "true") {
         console.log("========== JWT CALLBACK ==========");
@@ -81,7 +72,6 @@ export const authOptions: NextAuthOptions = {
       return token;
     },
 
-    // Callback da sessão
     async session({ session, token }) {
       if (process.env.NEXTAUTH_DEBUG === "true") {
         console.log("========== SESSION CALLBACK ==========");
@@ -97,7 +87,6 @@ export const authOptions: NextAuthOptions = {
     },
   },
 
-  // Configurações adicionais
   session: {
     strategy: "jwt",
   },

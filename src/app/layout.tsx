@@ -1,13 +1,14 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { getServerSession } from "next-auth";
+import AccessControl from "@/components/auth/AccessControl";
 import I18nProvider from "@/components/base/i18nProvider";
 import Providers from "@/components/base/Providers";
 import Footer from "@/components/layout/Footer";
 import Header from "@/components/layout/Header";
 import { authOptions } from "@/lib/auth";
+import "@/config/validate-env";
 import "@/styles/globals.css";
-import AccessControl from "@/components/auth/AccessControl";
 
 const inter = Inter({ subsets: ["latin"] });
 
