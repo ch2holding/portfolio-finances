@@ -1,17 +1,21 @@
 import { getClientEnv, getServerEnv } from "./env";
 
 export function validateEnvOnStartup() {
+  const aiEnabled = process.env.NEXT_PUBLIC_ENABLE_AI_FEATURES === "true";
+
+  const isBuildTime = process.env.SKIP_ENV_VALIDATION === "true";
+
   console.log("🔍 Validando variáveis de ambiente...");
 
   try {
     const clientEnv = getClientEnv();
     console.log("✅ Variáveis CLIENT validadas com sucesso");
 
-    if (typeof window === "undefined") {
+    if (typeof window === "undefined" && !isBuildTime) {
       const serverEnv = getServerEnv();
       console.log("✅ Variáveis SERVER validadas com sucesso");
 
-      if (!serverEnv.OPENAI_API_KEY) {
+      if (aiEnabled && !serverEnv?.OPENAI_API_KEY) {
         console.warn(
           "⚠️  OPENAI_API_KEY não configurada - Features de IA estarão desabilitadas",
         );
@@ -27,6 +31,8 @@ export function validateEnvOnStartup() {
           throw new Error("Configuração inválida para produção");
         }
       }
+    } else if (isBuildTime) {
+      console.log("⏭️  Validação SERVER pulada (build time)");
     }
 
     console.log("✅ Todas as validações passaram!\n");
@@ -42,8 +48,15 @@ export function validateEnvOnStartup() {
 
     console.error("\n📖 Consulte CONFIGURATION.md para instruções de setup\n");
 
-    if (process.env.NODE_ENV === "production") {
+    if (process.env.NODE_ENV === "production" && !isBuildTime) {
       process.exit(1);
+    }
+
+    if (isBuildTime) {
+      console.warn(
+        "⚠️  Build continuará. Certifique-se de configurar env vars no runtime!",
+      );
+      return false;
     }
 
     throw error;

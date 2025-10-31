@@ -11,6 +11,7 @@ const nextConfig: NextConfig = {
   // ==================== PERFORMANCE ====================
   reactStrictMode: true,
   compress: true,
+  output: "standalone",
 
   // ==================== IMAGES ====================
   images: {

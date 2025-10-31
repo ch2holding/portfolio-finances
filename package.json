@@ -9,7 +9,7 @@
     "lint": "biome check",
     "format": "biome format --write",
     "test": "npm run check:ssr && npm run smoke:ci",
-    "prepare": "husky install",
+    "prepare": "command -v husky >/dev/null 2>&1 && husky install || echo 'husky off in CI'",
     "biome:check": "biome check .",
     "biome:check:write": "biome check --write .",
     "biome:format": "biome format --write .",

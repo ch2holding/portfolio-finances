@@ -90,6 +90,13 @@ export function getClientEnv() {
 }
 
 export function getServerEnv() {
+  const SKIP = process.env.SKIP_ENV_VALIDATION === "true";
+  if (SKIP) {
+    throw new Error(
+      "Acesso a server env durante o build (SKIP_ENV_VALIDATION=true).",
+    );
+  }
+
   if (typeof window !== "undefined") {
     throw new Error("getServerEnv() não pode ser chamado no browser!");
   }
