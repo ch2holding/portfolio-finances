@@ -1,125 +1,274 @@
-# 💰 Finance AI – Controle Financeiro Inteligente com IA
+# 🤖 Finance AI
 
-O **Finance AI** é uma plataforma completa de controle financeiro pessoal com suporte a:
-✅ Múltiplas carteiras (crédito, débito, conta bancária, carteira física)  
-✅ Compras parceladas com geração automática de parcelas  
-✅ Faturas de cartão com fechamento e vencimento configuráveis  
-✅ Importação de extratos bancários (CSV)  
-✅ IA para classificação automática de gastos e insights financeiros  
-✅ Dashboard com análise de despesas e orçamento mensal  
-✅ Módulo de investimentos (renda fixa/variável)  
-✅ Programas de pontos (Livelo, Esfera, Átomos, etc.)  
-✅ Chat financeiro com LLM (ChatGPT-like)  
-✅ Segurança com Firestore Rules + autenticação com NextAuth  
-
-> ✅ Este projeto faz parte de um **portfólio profissional** demonstrando habilidades avançadas de engenharia frontend, backend, arquitetura de software e IA aplicada.
+> Sistema inteligente de controle financeiro pessoal com integração de IA
 
 ---
 
-## 🚀 Stack Tecnológica
+## 📋 Sobre o Projeto
 
-| Camada | Tecnologia | Motivo da escolha |
-|--------|------------|-------------------|
-| Frontend | Next.js 15 (App Router) | Performance + SSR/SSG + edge-ready |
-| Linguagem | TypeScript | Tipagem forte e segurança |
-| UI/Design | Tailwind CSS + Shadcn/UI | Componentes limpos e flexíveis |
-| Autenticação | NextAuth.js | Auth seguro com JWT + Firebase |
-| Banco de Dados | Firebase Firestore | Escalável, rápido e simples |
-| Storage | Firestore + local | Dados estruturados e coleções |
-| Validação | Zod | Segurança de dados |
-| Gerenciamento de formulários | React Hook Form | Performance e DX |
-| IA | LLM Provider Agnostic (OpenAI/local) | Extensível |
-| Gráficos | Recharts | Versátil e simples |
-| Testes | Vitest + Playwright | Unit + E2E |
-| Qualidade | ESLint + Prettier + Husky | Padrão de código |
-| Deploy | Vercel ou VPS (Docker) | Performático e simples |
+O **Finance AI** é uma aplicação moderna de gestão financeira pessoal que utiliza Inteligência Artificial para ajudar usuários a:
+
+- 📊 Gerenciar contas bancárias e transações
+- 💰 Criar e acompanhar orçamentos
+- 📈 Monitorar investimentos
+- 🎯 Atingir metas financeiras
+- 🤖 Receber insights inteligentes via IA
+- 🎮 Gamificar hábitos financeiros saudáveis
 
 ---
 
-## 📦 Estrutura (parcial)
+## 🏗️ Arquitetura
 
-/app # Rotas Next.js
-/components # UI e componentes funcionais
-/config # Config/env
-/dto # DTOs de entrada/saída
-/lib # Utils e helpers
-/services # Domínio (accounts, transactions, ai etc)
-/types # Tipagem global
-/docs # Notas técnicas e ADRs
+O Finance AI segue uma **arquitetura modular baseada em domínios** (Domain Modules), inspirada em Clean Architecture e Domain-Driven Design.
 
+### Princípios Fundamentais
 
----
+1. **Domain Modules**: Código organizado por domínio, não por tipo técnico
+2. **Repository Pattern**: Isolamento da camada de dados
+3. **SSR Safe**: Sem dependências client-side em lógica de negócio
+4. **Zod Everywhere**: Validação em runtime de todas as entradas
+5. **AI Tools Layer**: Integração segura com LLM
+6. **Clean Architecture**: Separação clara de responsabilidades
 
-## Referencias
-
-📚 Documentação de Arquitetura → ver [ARCHITECTURE.md](./docs/ARCHITECTURE.md)
+> 📖 **Decisões Arquiteturais:** Veja [docs/ADR-0001-arquitetura-base.md](./docs/ADR-0001-arquitetura-base.md)
 
 ---
 
-## 🔧 Funcionalidades confirmadas (MVP+)
+## 📦 Módulos de Domínio
 
-✅ Controle financeiro completo  
-✅ Parcelamento com engine de parcelas  
-✅ Dashboard com KPIs e gráficos  
-✅ Orçamento por categoria  
-✅ Importador CSV inteligente  
-✅ Chat com IA para consultas financeiras  
-✅ Classificação automática de gastos  
-✅ Investimentos e posições  
-✅ Programa de pontos e fidelidade  
-✅ Histórico e auditoria leve  
-✅ Segurança aprimorada com rules  
+### 🏦 **Accounts** (Contas Bancárias)
+Gerenciamento de contas bancárias do usuário.
 
----
+**Responsabilidades:**
+- CRUD de contas (Conta Corrente, Poupança, Carteira Digital)
+- Cálculo de saldo consolidado
+- Histórico de saldos
 
-## 🔐 Segurança
+**Serviços principais:**
+- `accountService.create()` - Criar nova conta
+- `accountService.getBalance()` - Obter saldo atual
+- `accountService.listByUser()` - Listar contas do usuário
 
-- Firestore Rules com acesso isolado por usuário
-- Dados privados nunca saem do backend
-- Logs seguros e auditáveis
-- Proteção contra Prompt Injection (IA)
+**Schemas:**
+- `createAccountSchema` - Validação de criação
+- `updateAccountSchema` - Validação de atualização
 
 ---
 
-## ✅ Status do Projeto
+### 💸 **Transactions** (Transações)
+Gestão de receitas e despesas.
 
-| Fase | Status |
-|------|--------|
-| Planejamento | ✅ Concluído |
-| Roadmap técnico | ✅ Concluído |
-| Sprint 1 – Setup/Arquitetura | ⏳ Em desenvolvimento |
-| Backend + Frontend | 🔜 Próximo |
-| IA | 🔜 Próximo |
-| Deploy final | 🔜 Próximo |
+**Responsabilidades:**
+- Registro de transações (INCOME/EXPENSE)
+- Categorização automática (via IA)
+- Atualização de saldo das contas
+- Filtragem e busca avançada
 
----
+**Serviços principais:**
+- `transactionService.create()` - Criar transação e atualizar saldo
+- `transactionService.listByPeriod()` - Buscar por período
+- `transactionService.categorize()` - Categorizar com IA
 
-## 🛠️ Scripts (pnpm)
-
-| Script | Função |
-|--------|--------|
-| `pnpm dev` | Rodar em modo desenvolvimento |
-| `pnpm build` | Build de produção |
-| `pnpm lint` | Lint do código |
-| `pnpm typecheck` | Checar tipagem TS |
-| `pnpm format` | Formatador Prettier |
+**Schemas:**
+- `createTransactionSchema` - Validação de criação
+- `transactionFilterSchema` - Validação de filtros
 
 ---
 
-## ✅ Requisitos
+### 🎯 **Budgets** (Orçamentos)
+Controle de orçamentos mensais por categoria.
 
+**Responsabilidades:**
+- Criação de orçamentos mensais
+- Monitoramento de gastos vs. orçado
+- Alertas de excesso de gastos
+- Sugestões de economia
+
+**Serviços principais:**
+- `budgetService.create()` - Criar orçamento
+- `budgetService.checkOverspending()` - Verificar se ultrapassou
+- `budgetService.getSuggestions()` - Sugestões da IA
+
+**Schemas:**
+- `createBudgetSchema` - Validação de criação
+- `budgetProgressSchema` - Validação de progresso
+
+---
+
+### 📈 **Investments** (Investimentos)
+Gestão de carteira de investimentos.
+
+**Responsabilidades:**
+- Registro de ativos (ações, FIIs, renda fixa)
+- Cálculo de rentabilidade (ROI)
+- Acompanhamento de dividendos
+- Sugestões de diversificação
+
+**Serviços principais:**
+- `investmentService.create()` - Adicionar investimento
+- `investmentService.calculateROI()` - Calcular retorno
+- `investmentService.getDiversificationSuggestions()` - Sugestões IA
+
+**Schemas:**
+- `createInvestmentSchema` - Validação de criação
+- `investmentPerformanceSchema` - Validação de performance
+
+---
+
+### 🤖 **AI** (Inteligência Artificial)
+Integração com LLM para insights financeiros.
+
+**Responsabilidades:**
+- Análise de padrões de gastos
+- Sugestões personalizadas
+- Categorização automática de transações
+- Respostas a perguntas financeiras
+
+**Serviços principais:**
+- `aiService.generateInsights()` - Gerar insights
+- `aiService.chat()` - Chat financeiro
+- `aiService.categorizeTransaction()` - Categorizar
+
+**LLM Tools disponíveis:**
+- `getFinancialSummaryTool` - Resumo financeiro
+- `analyzeSpendingPatternsTool` - Análise de padrões
+- `suggestBudgetAdjustmentsTool` - Sugestões de orçamento
+
+---
+
+### 🎮 **Points** (Gamificação)
+Sistema de pontuação e conquistas.
+
+**Responsabilidades:**
+- Atribuição de pontos por ações
+- Sistema de conquistas (achievements)
+- Ranking de usuários
+- Recompensas por metas
+
+**Serviços principais:**
+- `pointsService.award()` - Conceder pontos
+- `pointsService.checkAchievements()` - Verificar conquistas
+- `pointsService.getRanking()` - Obter ranking
+
+**Schemas:**
+- `awardPointsSchema` - Validação de pontuação
+- `achievementSchema` - Validação de conquistas
+
+---
+
+## 🛠️ Stack Tecnológica
+
+### Core
+- **Framework:** [Next.js 15](https://nextjs.org/) (App Router)
+- **Linguagem:** [TypeScript 5](https://www.typescriptlang.org/)
+- **Banco de Dados:** [Firebase Firestore](https://firebase.google.com/docs/firestore)
+- **Autenticação:** [NextAuth.js](https://next-auth.js.org/) (JWT)
+
+### UI/UX
+- **Estilização:** [Tailwind CSS](https://tailwindcss.com/)
+- **Componentes:** [shadcn/ui](https://ui.shadcn.com/)
+- **Ícones:** [Lucide Icons](https://lucide.dev/)
+
+### Validação e Tipos
+- **Validação Runtime:** [Zod](https://zod.dev/)
+- **Type Safety:** TypeScript strict mode
+
+### IA
+- **LLM:** Anthropic Claude (via API)
+- **Prompt Engineering:** Custom AI Tools Layer
+
+---
+
+## 🚀 Como Executar
+
+### Pré-requisitos
 - Node.js 18+
-- pnpm 9+
-- Conta Firebase configurada
-- Chave de API de IA (opcional no início)
+- npm ou yarn
+- Firebase Project configurado
+- Chave API do Anthropic Claude
+
+### Instalação
+
+```bash
+# Instalar dependências
+npm install
+
+# Configurar variáveis de ambiente
+cp .env.example .env.local
+# Editar .env.local com suas credenciais
+```
+
+### Variáveis de Ambiente Necessárias
+
+```env
+# Firebase
+NEXT_PUBLIC_FIREBASE_API_KEY=
+NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=
+NEXT_PUBLIC_FIREBASE_PROJECT_ID=
+NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET=
+NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=
+NEXT_PUBLIC_FIREBASE_APP_ID=
+
+# NextAuth
+NEXTAUTH_SECRET=
+NEXTAUTH_URL=http://localhost:3000
+
+# Anthropic Claude
+ANTHROPIC_API_KEY=
+```
+
+### Executar em Desenvolvimento
+
+```bash
+npm run dev
+# Aplicação rodará em http://localhost:3000
+```
+
+### Build de Produção
+
+```bash
+npm run build
+npm start
+```
 
 ---
 
-### 🌎 Licença
-Este projeto é **open source** sob licença MIT – uso livre e educativo.
+## 📁 Estrutura do Projeto
+
+```
+finance-ai/
+├── src/
+│   ├── domain/              # Módulos de domínio
+│   │   ├── accounts/        # Contas bancárias
+│   │   ├── transactions/    # Transações
+│   │   ├── budgets/         # Orçamentos
+│   │   ├── investments/     # Investimentos
+│   │   ├── ai/              # IA
+│   │   └── points/          # Gamificação
+│   ├── app/                 # Next.js App Router
+│   ├── components/          # Componentes React
+│   ├── utils/               # Utilitários
+│   └── types/               # Tipos globais
+├── docs/                    # Documentação
+│   └── ADR-0001-*.md        # Architectural Decision Records
+├── CONTRIBUTING.md          # Guia de contribuição
+└── README.md                # Este arquivo
+```
 
 ---
 
-### ✨ Autor
-Desenvolvido por **Nelson Christovam Neto**
-Portfólio profissional com foco em **arquitetura, escalabilidade e IA aplicada**.  
+## 📖 Documentação Adicional
+
+- [ADR-0001: Arquitetura Base](./docs/ADR-0001-arquitetura-base.md)
+- [Guia de Domain Modules](./docs/domain-modules-guide.md) _(em breve)_
+- [Integração com IA](./docs/ai-integration.md) _(em breve)_
+
+---
+
+## 👨‍💻 Autor
+
+Projeto desenvolvido como parte do meu portfolio pessoal.
+
+---
+
+**Última atualização:** 31 de Outubro de 2025
