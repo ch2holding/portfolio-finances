@@ -12,61 +12,188 @@
       "offline": "Offline",
       "active": "Active",
       "inactive": "Inactive"
+    },
+    "loading": "Loading...",
+    "error": "Error",
+    "success": "Success",
+    "tryAgain": "Try Again",
+    "goHome": "Go Home",
+    "goBack": "Go Back",
+    "contact": "Contact"
+  },
+  "nav": {
+    "home": "Home",
+    "features": "Features",
+    "pricing": "Pricing",
+    "about": "About",
+    "dashboard": "Dashboard",
+    "accounts": "Accounts",
+    "transactions": "Transactions",
+    "budgets": "Budgets",
+    "investments": "Investments",
+    "settings": "Settings",
+    "signIn": "Sign In",
+    "signOut": "Sign Out",
+    "signUp": "Sign Up"
+  },
+  "hero": {
+    "title": "Smart Financial Control",
+    "subtitle": "Manage your finances with the power of Artificial Intelligence",
+    "description": "Finance AI is the complete platform to control your accounts, transactions, investments and receive personalized insights with AI.",
+    "cta": {
+      "primary": "Get Started",
+      "secondary": "Learn More",
+      "ready": "Ready to get started?",
+      "readyDescription": "Start managing your finances intelligently today"
+    },
+    "stats": {
+      "users": "Users",
+      "transactions": "Transactions processed",
+      "savings": "Average savings"
     }
+  },
+  "features": {
+    "title": "Features That Make a Difference",
+    "subtitle": "Everything you need for complete control of your finances",
+    "accounts": {
+      "title": "Multiple Accounts",
+      "description": "Manage all your bank accounts in one place"
+    },
+    "transactions": {
+      "title": "Automatic Transactions",
+      "description": "Smart AI categorization of all your movements"
+    },
+    "budgets": {
+      "title": "Smart Budgets",
+      "description": "Create goals and get alerts when approaching the limit"
+    },
+    "investments": {
+      "title": "Investment Portfolio",
+      "description": "Track profitability and receive diversification suggestions"
+    },
+    "ai": {
+      "title": "AI Insights",
+      "description": "Personalized analysis and suggestions to improve your financial health"
+    },
+    "gamification": {
+      "title": "Gamification",
+      "description": "Earn points and achievements when reaching your financial goals"
+    }
+  },
+  "auth": {
+    "signIn": {
+      "title": "Sign in to Finance AI",
+      "subtitle": "Access your account to manage your finances",
+      "withGoogle": "Sign in with Google",
+      "withEmail": "Sign in with Email",
+      "noAccount": "Don't have an account?",
+      "createAccount": "Create account now",
+      "terms": "By signing in, you agree to our",
+      "termsLink": "Terms of Service",
+      "and": "and",
+      "privacyLink": "Privacy Policy",
+      "secure": "Secure and encrypted connection",
+      "backToHome": "Back to home"
+    },
+    "error": {
+      "title": "Authentication Error",
+      "subtitle": "There was a problem signing in",
+      "tryAgain": "Try Again",
+      "needHelp": "Need help?",
+      "contactSupport": "Contact support",
+      "troubleshoot": "If the problem persists, clear your browser cache and try again",
+      "backToHome": "Back to Home",
+      "errorCode": "Error code",
+      "errors": {
+        "Configuration": "Server configuration error",
+        "AccessDenied": "Access denied. Check your credentials",
+        "Verification": "Invalid or expired verification token",
+        "OAuthSignin": "Error starting login with provider",
+        "OAuthCallback": "Error processing provider response",
+        "OAuthCreateAccount": "Could not create account with this provider",
+        "EmailCreateAccount": "This email is already in use",
+        "Callback": "Error during authentication process",
+        "OAuthAccountNotLinked": "This email is already associated with another account",
+        "EmailSignin": "Could not send verification email",
+        "CredentialsSignin": "Incorrect email or password",
+        "SessionRequired": "You need to be authenticated",
+        "Default": "Unexpected error during authentication"
+      }
+    },
+    "signOut": {
+      "confirm": "Are you sure you want to sign out?",
+      "success": "You have successfully signed out"
+    }
+  },
+  "footer": {
+    "tagline": "Smart financial control with AI",
+    "product": {
+      "title": "Product",
+      "features": "Features",
+      "pricing": "Pricing",
+      "security": "Security",
+      "integrations": "Integrations"
+    },
+    "company": {
+      "title": "Company",
+      "about": "About Us",
+      "blog": "Blog",
+      "careers": "Careers",
+      "press": "Press"
+    },
+    "support": {
+      "title": "Support",
+      "help": "Help Center",
+      "docs": "Documentation",
+      "api": "API",
+      "contact": "Contact"
+    },
+    "legal": {
+      "title": "Legal",
+      "privacy": "Privacy",
+      "terms": "Terms of Service",
+      "cookies": "Cookies",
+      "licenses": "Licenses"
+    },
+    "newsletter": {
+      "title": "Newsletter",
+      "description": "Get tips and news about finances",
+      "placeholder": "Your email",
+      "button": "Subscribe",
+      "success": "Successfully subscribed!"
+    },
+    "copyright": "© 2025 Finance AI. All rights reserved.",
+    "madeWith": "Made with",
+    "in": "in"
   },
   "dashboard": {
     "title": "My Dashboard",
-    "welcome": "Welcome to the Dashboard!",
+    "welcome": "Welcome to Dashboard!",
     "memberSince": "Member since",
     "lastLogin": "Last login",
     "now": "Now",
     "sessionInfo": "Your session is secure and encrypted"
   },
   "errors": {
-    "notFound": {
+    "404": {
       "title": "Page not found",
-      "description": "The page you are looking for does not exist or has been moved.",
+      "description": "The page you are looking for does not exist or has been moved",
       "actions": {
-        "goHome": "Go to Home",
-        "goBack": "Go Back"
-      },
-      "supportText": {
-        "prefix": "If you believe this is an error,",
-        "link": "contact support"
+        "home": "Go Home",
+        "back": "Go Back",
+        "support": "contact support",
+        "supportPrefix": "If you believe this is an error"
       }
     },
-    "serverError": {
+    "500": {
       "title": "Something went wrong",
-      "description": "Sorry, an unexpected error occurred.",
-      "devMode": {
-        "label": "Error (development mode):"
-      },
+      "description": "Sorry, an unexpected error occurred",
+      "devError": "Error (development mode)",
       "actions": {
-        "tryAgain": "Try Again",
-        "goHome": "Go to Home"
-      },
-      "supportText": {
-        "prefix": "If the problem persists,",
-        "link": "contact support"
+        "retry": "Try again",
+        "home": "Go Home",
+        "support": "If the problem persists, contact support"
       }
-    }
-  },
-  "health": {
-    "status": {
-      "ok": "OK",
-      "error": "Error"
-    },
-    "fields": {
-      "status": "Status",
-      "version": "Version",
-      "environment": "Environment",
-      "timestamp": "Timestamp"
-    },
-    "environments": {
-      "development": "Development",
-      "production": "Production",
-      "preview": "Preview",
-      "unknown": "Unknown"
     }
   }
 }

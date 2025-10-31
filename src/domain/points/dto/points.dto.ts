@@ -1,14 +1,22 @@
 export interface CreatePointsProgramDTO {
   userId: string;
   program:
-    | 'livelo' | 'esfera' | 'iupp' | 'smiles'
-    | 'latam_pass' | 'tudoazul' | 'ame' | 'meli' | 'outro';
+    | "livelo"
+    | "esfera"
+    | "iupp"
+    | "smiles"
+    | "latam_pass"
+    | "tudoazul"
+    | "ame"
+    | "meli"
+    | "outro";
   memberId?: string;
   linkedAccounts?: string[];
   notes?: string;
 }
 
-export interface UpdatePointsProgramDTO extends Partial<CreatePointsProgramDTO> {
+export interface UpdatePointsProgramDTO
+  extends Partial<CreatePointsProgramDTO> {
   id: string;
   userId: string;
 }
@@ -17,14 +25,15 @@ export interface CreatePointsBalanceDTO {
   userId: string;
   programId: string;
   points: number;
-  earnedAt: number;  // ts
+  earnedAt: number; // ts
   expiresAt: number; // ts
-  source?: 'credit_card' | 'partner' | 'promo' | 'transfer';
+  source?: "credit_card" | "partner" | "promo" | "transfer";
   promoTag?: string;
-  status?: 'active' | 'redeemed' | 'expired';
+  status?: "active" | "redeemed" | "expired";
 }
 
-export interface UpdatePointsBalanceDTO extends Partial<CreatePointsBalanceDTO> {
+export interface UpdatePointsBalanceDTO
+  extends Partial<CreatePointsBalanceDTO> {
   id: string;
   userId: string;
 }
@@ -33,7 +42,7 @@ export interface CreatePointsOperationDTO {
   userId: string;
   programId: string;
   date: number; // ts
-  type: 'earn' | 'redeem' | 'transfer_in' | 'transfer_out' | 'adjust';
+  type: "earn" | "redeem" | "transfer_in" | "transfer_out" | "adjust";
   pointsDelta: number;
   partnerOrAirline?: string;
   rateOrBonus?: number;
@@ -41,15 +50,23 @@ export interface CreatePointsOperationDTO {
   notes?: string;
 }
 
-export interface UpdatePointsOperationDTO extends Partial<CreatePointsOperationDTO> {
+export interface UpdatePointsOperationDTO
+  extends Partial<CreatePointsOperationDTO> {
   id: string;
   userId: string;
 }
 
 export interface CreatePointsOfferDTO {
   program:
-    | 'livelo' | 'esfera' | 'iupp' | 'smiles'
-    | 'latam_pass' | 'tudoazul' | 'ame' | 'meli' | 'outro';
+    | "livelo"
+    | "esfera"
+    | "iupp"
+    | "smiles"
+    | "latam_pass"
+    | "tudoazul"
+    | "ame"
+    | "meli"
+    | "outro";
   title: string;
   description: string;
   bonus: number;

@@ -1,11 +1,11 @@
-import { z } from 'zod';
+import { tsSchema, uidSchema } from "@lib/validation/common.schema";
 import {
-  pointsProgramNameEnum,
+  cardBrandEnum,
   pointsBalanceStatusEnum,
   pointsOperationTypeEnum,
-  cardBrandEnum,
-} from './enums';
-import { uidSchema, tsSchema } from './common.schema';
+  pointsProgramNameEnum,
+} from "@lib/validation/enums";
+import { z } from "zod";
 
 export const createPointsProgramSchema = z.object({
   userId: uidSchema,
@@ -24,9 +24,9 @@ export const createPointsBalanceSchema = z.object({
   points: z.number().int().nonnegative(),
   earnedAt: tsSchema,
   expiresAt: tsSchema,
-  source: z.enum(['credit_card','partner','promo','transfer']).optional(),
+  source: z.enum(["credit_card", "partner", "promo", "transfer"]).optional(),
   promoTag: z.string().optional(),
-  status: pointsBalanceStatusEnum.default('active'),
+  status: pointsBalanceStatusEnum.default("active"),
 });
 export const updatePointsBalanceSchema = createPointsBalanceSchema
   .partial()
@@ -40,11 +40,13 @@ export const createPointsOperationSchema = z.object({
   pointsDelta: z.number().int(),
   partnerOrAirline: z.string().optional(),
   rateOrBonus: z.number().min(0).max(5).optional(),
-  relatedPurchase: z.object({
-    accountId: z.string().min(1),
-    amount: z.number().int(),
-    cardBrand: cardBrandEnum.optional(),
-  }).optional(),
+  relatedPurchase: z
+    .object({
+      accountId: z.string().min(1),
+      amount: z.number().int(),
+      cardBrand: cardBrandEnum.optional(),
+    })
+    .optional(),
   notes: z.string().optional(),
 });
 export const updatePointsOperationSchema = createPointsOperationSchema

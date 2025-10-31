@@ -1,6 +1,6 @@
-import { z } from 'zod';
-import { uidSchema, tsSchema } from './common.schema';
-import { aiRoleEnum } from './enums';
+import { tsSchema, uidSchema } from "@lib/validation/common.schema";
+import { aiRoleEnum } from "@lib/validation/enums";
+import { z } from "zod";
 
 export const createAiSessionSchema = z.object({
   userId: uidSchema,

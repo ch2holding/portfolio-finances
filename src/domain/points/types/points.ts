@@ -1,15 +1,15 @@
-import { BaseEntity } from './common';
+import type { BaseEntity } from "@/types/common";
 
 export type PointsProgramName =
-  | 'livelo'
-  | 'esfera'
-  | 'iupp'
-  | 'smiles'
-  | 'latam_pass'
-  | 'tudoazul'
-  | 'ame'
-  | 'meli'
-  | 'outro';
+  | "livelo"
+  | "esfera"
+  | "iupp"
+  | "smiles"
+  | "latam_pass"
+  | "tudoazul"
+  | "ame"
+  | "meli"
+  | "outro";
 
 export interface PointsProgram extends BaseEntity {
   program: PointsProgramName;
@@ -23,15 +23,15 @@ export interface PointsBalance extends BaseEntity {
   points: number;
   earnedAt: number;
   expiresAt: number;
-  source?: 'credit_card' | 'partner' | 'promo' | 'transfer';
+  source?: "credit_card" | "partner" | "promo" | "transfer";
   promoTag?: string;
-  status: 'active' | 'redeemed' | 'expired';
+  status: "active" | "redeemed" | "expired";
 }
 
 export interface PointsOperation extends BaseEntity {
   programId: string;
   date: number;
-  type: 'earn' | 'redeem' | 'transfer_in' | 'transfer_out' | 'adjust';
+  type: "earn" | "redeem" | "transfer_in" | "transfer_out" | "adjust";
   pointsDelta: number;
   partnerOrAirline?: string;
   rateOrBonus?: number;

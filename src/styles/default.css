@@ -1,70 +1,131 @@
 :root {
   --radius: 0.625rem;
+
   --background: hsl(0 0% 100%);
-  --foreground: hsl(240 10% 4%);
+  --foreground: hsl(222 47% 11%);
+
   --card: hsl(0 0% 100%);
-  --card-foreground: hsl(240 10% 4%);
+  --card-foreground: hsl(222 47% 11%);
+
   --popover: hsl(0 0% 100%);
-  --popover-foreground: hsl(240 10% 4%);
-  --primary: hsl(246 47% 58%);
-  --primary-foreground: hsl(0 0% 98%);
-  --secondary: hsl(220 14% 46%);
-  --secondary-foreground: hsl(0 0% 98%);
-  --muted: hsl(220 14% 96%);
-  --muted-foreground: hsl(240 4% 46%);
-  --accent: hsl(220 14% 96%);
-  --accent-foreground: hsl(240 6% 10%);
-  --destructive: hsl(0 84% 60%);
-  --destructive-foreground: hsl(0 0% 98%);
-  --border: hsl(220 13% 91%);
-  --input: hsl(220 13% 91%);
-  --ring: hsl(224 71% 45%);
-  --chart-1: hsl(30 84% 60%);
-  --chart-2: hsl(200 70% 50%);
-  --chart-3: hsl(230 70% 40%);
-  --chart-4: hsl(60 80% 60%);
-  --chart-5: hsl(40 80% 60%);
+  --popover-foreground: hsl(222 47% 11%);
+
+  --primary: hsl(217 91% 60%);
+  --primary-foreground: hsl(0 0% 100%);
+
+  --secondary: hsl(215 16% 47%);
+  --secondary-foreground: hsl(0 0% 100%);
+
+  --muted: hsl(210 40% 96%);
+  --muted-foreground: hsl(215 16% 47%);
+
+  --accent: hsl(210 40% 96%);
+  --accent-foreground: hsl(222 47% 11%);
+
+  --destructive: hsl(0 72% 51%);
+  --destructive-foreground: hsl(0 0% 100%);
+
+  --success: hsl(160 84% 39%);
+  --success-foreground: hsl(0 0% 100%);
+
+  --warning: hsl(38 92% 50%);
+  --warning-foreground: hsl(0 0% 100%);
+
+  --border: hsl(214 32% 91%);
+  --input: hsl(214 32% 91%);
+  --ring: hsl(217 91% 60%);
+
+  --chart-1: hsl(217 91% 60%);
+  --chart-2: hsl(160 84% 39%);
+  --chart-3: hsl(38 92% 50%);
+  --chart-4: hsl(271 81% 56%);
+  --chart-5: hsl(0 72% 51%);
+
   --sidebar: hsl(0 0% 98%);
-  --sidebar-foreground: hsl(240 10% 4%);
-  --sidebar-primary: hsl(246 47% 58%);
-  --sidebar-primary-foreground: hsl(0 0% 98%);
-  --sidebar-accent: hsl(220 14% 96%);
-  --sidebar-accent-foreground: hsl(240 6% 10%);
-  --sidebar-border: hsl(220 13% 91%);
-  --sidebar-ring: hsl(224 71% 45%);
+  --sidebar-foreground: hsl(222 47% 11%);
+  --sidebar-primary: hsl(217 91% 60%);
+  --sidebar-primary-foreground: hsl(0 0% 100%);
+  --sidebar-accent: hsl(210 40% 96%);
+  --sidebar-accent-foreground: hsl(222 47% 11%);
+  --sidebar-border: hsl(214 32% 91%);
+  --sidebar-ring: hsl(217 91% 60%);
 }
 
 .dark {
-  --background: hsl(240 10% 4%);
-  --foreground: hsl(0 0% 98%);
-  --card: hsl(240 10% 10%);
-  --card-foreground: hsl(0 0% 98%);
-  --popover: hsl(240 10% 10%);
-  --popover-foreground: hsl(0 0% 98%);
-  --primary: hsl(246 70% 70%);
-  --primary-foreground: hsl(240 10% 10%);
-  --secondary: hsl(220 14% 46%);
-  --secondary-foreground: hsl(0 0% 98%);
-  --muted: hsl(240 6% 17%);
-  --muted-foreground: hsl(240 5% 65%);
-  --accent: hsl(240 6% 17%);
-  --accent-foreground: hsl(0 0% 98%);
-  --destructive: hsl(0 62% 50%);
-  --destructive-foreground: hsl(0 0% 98%);
-  --border: hsla(0 0% 100% / 10%);
-  --input: hsla(0 0% 100% / 15%);
-  --ring: hsl(240 5% 65%);
-  --chart-1: hsl(260 70% 60%);
-  --chart-2: hsl(180 60% 50%);
-  --chart-3: hsl(40 80% 60%);
-  --chart-4: hsl(290 70% 60%);
-  --chart-5: hsl(10 80% 60%);
-  --sidebar: hsl(240 10% 10%);
-  --sidebar-foreground: hsl(0 0% 98%);
-  --sidebar-primary: hsl(246 70% 70%);
-  --sidebar-primary-foreground: hsl(0 0% 98%);
-  --sidebar-accent: hsl(240 6% 17%);
-  --sidebar-accent-foreground: hsl(0 0% 98%);
-  --sidebar-border: hsla(0 0% 100% / 10%);
-  --sidebar-ring: hsl(240 5% 65%);
+  --background: hsl(222 47% 11%);
+  --foreground: hsl(210 40% 98%);
+
+  --card: hsl(222 47% 15%);
+  --card-foreground: hsl(210 40% 98%);
+
+  --popover: hsl(222 47% 15%);
+  --popover-foreground: hsl(210 40% 98%);
+
+  --primary: hsl(217 91% 65%);
+  --primary-foreground: hsl(222 47% 11%);
+
+  --secondary: hsl(215 16% 47%);
+  --secondary-foreground: hsl(210 40% 98%);
+
+  --muted: hsl(217 33% 17%);
+  --muted-foreground: hsl(215 20% 65%);
+
+  --accent: hsl(217 33% 17%);
+  --accent-foreground: hsl(210 40% 98%);
+
+  --destructive: hsl(0 63% 48%);
+  --destructive-foreground: hsl(210 40% 98%);
+
+  --success: hsl(160 84% 45%);
+  --success-foreground: hsl(222 47% 11%);
+
+  --warning: hsl(38 92% 58%);
+  --warning-foreground: hsl(222 47% 11%);
+
+  --border: hsl(217 33% 17%);
+  --input: hsl(217 33% 17%);
+  --ring: hsl(217 91% 65%);
+
+  --chart-1: hsl(217 91% 65%);
+  --chart-2: hsl(160 84% 45%);
+  --chart-3: hsl(38 92% 58%);
+  --chart-4: hsl(271 81% 65%);
+  --chart-5: hsl(0 72% 55%);
+
+  --sidebar: hsl(222 47% 15%);
+  --sidebar-foreground: hsl(210 40% 98%);
+  --sidebar-primary: hsl(217 91% 65%);
+  --sidebar-primary-foreground: hsl(222 47% 11%);
+  --sidebar-accent: hsl(217 33% 17%);
+  --sidebar-accent-foreground: hsl(210 40% 98%);
+  --sidebar-border: hsl(217 33% 17%);
+  --sidebar-ring: hsl(217 91% 65%);
+}
+
+:root {
+  --finance-gain: hsl(160 84% 39%);
+  --finance-gain-foreground: hsl(0 0% 100%);
+  --finance-loss: hsl(0 72% 51%);
+  --finance-loss-foreground: hsl(0 0% 100%);
+  --finance-neutral: hsl(215 16% 47%);
+  --finance-neutral-foreground: hsl(0 0% 100%);
+
+  --finance-stocks: hsl(217 91% 60%);
+  --finance-bonds: hsl(160 84% 39%);
+  --finance-crypto: hsl(271 81% 56%);
+  --finance-reits: hsl(38 92% 50%);
+}
+
+.dark {
+  --finance-gain: hsl(160 84% 45%);
+  --finance-gain-foreground: hsl(222 47% 11%);
+  --finance-loss: hsl(0 72% 55%);
+  --finance-loss-foreground: hsl(210 40% 98%);
+  --finance-neutral: hsl(215 20% 65%);
+  --finance-neutral-foreground: hsl(222 47% 11%);
+
+  --finance-stocks: hsl(217 91% 65%);
+  --finance-bonds: hsl(160 84% 45%);
+  --finance-crypto: hsl(271 81% 65%);
+  --finance-reits: hsl(38 92% 58%);
 }

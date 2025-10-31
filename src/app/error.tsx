@@ -4,6 +4,7 @@ import { AlertTriangle, Home, RefreshCw } from "lucide-react";
 import Link from "next/link";
 import { useTranslations } from "next-intl";
 import { useEffect } from "react";
+import { Button } from "@/components/ui/button";
 import { logSafeError } from "@/lib/safe-error";
 
 interface ErrorPageProps {
@@ -12,7 +13,7 @@ interface ErrorPageProps {
 }
 
 export default function ErrorPage({ error, reset }: ErrorPageProps) {
-  const t = useTranslations("errors.serverError");
+  const t = useTranslations("errors.500");
 
   useEffect(() => {
     logSafeError(error, "GlobalErrorBoundary");
@@ -38,7 +39,7 @@ export default function ErrorPage({ error, reset }: ErrorPageProps) {
         {isDevelopment && (
           <div className="my-6 rounded-lg border border-destructive/20 bg-destructive/5 p-4 text-left">
             <p className="mb-2 text-sm font-semibold text-destructive">
-              {t("devMode.label")}
+              Erro (modo desenvolvimento):
             </p>
             <p className="text-xs font-mono text-muted-foreground break-words">
               {error.message}
@@ -52,32 +53,25 @@ export default function ErrorPage({ error, reset }: ErrorPageProps) {
         )}
 
         <div className="flex flex-col gap-3 sm:flex-row sm:justify-center">
-          <button
-            type="button"
+          <Button
             onClick={reset}
             className="inline-flex items-center justify-center gap-2 rounded-lg bg-primary px-6 py-3 font-medium text-primary-foreground transition-colors hover:bg-primary/90"
           >
             <RefreshCw className="h-4 w-4" />
-            {t("actions.tryAgain")}
-          </button>
+            {t("actions.retry")}
+          </Button>
 
           <Link
             href="/"
             className="inline-flex items-center justify-center gap-2 rounded-lg border border-input bg-background px-6 py-3 font-medium transition-colors hover:bg-accent hover:text-accent-foreground"
           >
             <Home className="h-4 w-4" />
-            {t("actions.goHome")}
+            {t("actions.home")}
           </Link>
         </div>
 
         <div className="mt-12 text-sm text-muted-foreground">
-          <p>
-            {t("supportText.prefix")}{" "}
-            <Link href="/support" className="underline hover:text-foreground">
-              {t("supportText.link")}
-            </Link>
-            .
-          </p>
+          <p>{t("actions.support")}</p>
         </div>
       </div>
     </div>

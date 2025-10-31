@@ -642,12 +642,4 @@ describe('TransactionService', () => {
 
 ---
 
-## ❓ Dúvidas?
-
-- 💬 Abra uma [Discussion no GitHub](https://github.com/finance-ai/finance-ai/discussions)
-- 📧 Email: dev@financeai.com
-- 💻 Discord: [discord.gg/financeai](https://discord.gg/financeai)
-
----
-
 **Obrigado por contribuir! 🚀**

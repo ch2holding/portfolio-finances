@@ -12,7 +12,159 @@
       "offline": "Offline",
       "active": "Ativo",
       "inactive": "Inativo"
+    },
+    "loading": "Carregando...",
+    "error": "Erro",
+    "success": "Sucesso",
+    "tryAgain": "Tentar novamente",
+    "goHome": "Ir para Home",
+    "goBack": "Voltar",
+    "contact": "Contato"
+  },
+  "nav": {
+    "home": "Início",
+    "features": "Recursos",
+    "pricing": "Preços",
+    "about": "Sobre",
+    "dashboard": "Dashboard",
+    "accounts": "Contas",
+    "transactions": "Transações",
+    "budgets": "Orçamentos",
+    "investments": "Investimentos",
+    "settings": "Configurações",
+    "signIn": "Entrar",
+    "signOut": "Sair",
+    "signUp": "Criar conta"
+  },
+  "hero": {
+    "title": "Controle Financeiro Inteligente",
+    "subtitle": "Gerencie suas finanças com o poder da Inteligência Artificial",
+    "description": "Finance AI é a plataforma completa para controlar suas contas, transações, investimentos e receber insights personalizados com IA.",
+    "cta": {
+      "primary": "Começar Agora",
+      "secondary": "Saber Mais",
+      "ready": "Pronto para começar?",
+      "readyDescription": "Comece a gerenciar suas finanças de forma inteligente hoje mesmo"
+    },
+    "stats": {
+      "users": "Usuários",
+      "transactions": "Transações processadas",
+      "savings": "Economia média"
     }
+  },
+  "features": {
+    "title": "Recursos que Fazem a Diferença",
+    "subtitle": "Tudo que você precisa para ter controle total das suas finanças",
+    "accounts": {
+      "title": "Múltiplas Contas",
+      "description": "Gerencie todas as suas contas bancárias em um só lugar"
+    },
+    "transactions": {
+      "title": "Transações Automáticas",
+      "description": "Categorização inteligente com IA de todas as suas movimentações"
+    },
+    "budgets": {
+      "title": "Orçamentos Inteligentes",
+      "description": "Crie metas e receba alertas quando estiver próximo do limite"
+    },
+    "investments": {
+      "title": "Carteira de Investimentos",
+      "description": "Acompanhe rentabilidade e receba sugestões de diversificação"
+    },
+    "ai": {
+      "title": "Insights com IA",
+      "description": "Análises personalizadas e sugestões para melhorar sua saúde financeira"
+    },
+    "gamification": {
+      "title": "Gamificação",
+      "description": "Ganhe pontos e conquistas ao atingir suas metas financeiras"
+    }
+  },
+  "auth": {
+    "signIn": {
+      "title": "Entrar no Finance AI",
+      "subtitle": "Acesse sua conta para gerenciar suas finanças",
+      "withGoogle": "Entrar com Google",
+      "withEmail": "Entrar com Email",
+      "noAccount": "Não tem uma conta?",
+      "createAccount": "Criar conta agora",
+      "terms": "Ao fazer login, você concorda com nossos",
+      "termsLink": "Termos de Uso",
+      "and": "e",
+      "privacyLink": "Política de Privacidade",
+      "secure": "Conexão segura e criptografada",
+      "backToHome": "Voltar para home"
+    },
+    "error": {
+      "title": "Erro de Autenticação",
+      "subtitle": "Ocorreu um problema ao fazer login",
+      "tryAgain": "Tentar Novamente",
+      "needHelp": "Precisa de ajuda?",
+      "contactSupport": "Entre em contato com o suporte",
+      "troubleshoot": "Se o problema persistir, limpe o cache do navegador e tente novamente",
+      "backToHome": "Voltar para Home",
+      "errorCode": "Código do erro",
+      "errors": {
+        "Configuration": "Erro de configuração do servidor",
+        "AccessDenied": "Acesso negado. Verifique suas credenciais",
+        "Verification": "Token de verificação inválido ou expirado",
+        "OAuthSignin": "Erro ao iniciar login com provedor",
+        "OAuthCallback": "Erro ao processar resposta do provedor",
+        "OAuthCreateAccount": "Não foi possível criar conta com este provedor",
+        "EmailCreateAccount": "Este email já está em uso",
+        "Callback": "Erro durante o processo de autenticação",
+        "OAuthAccountNotLinked": "Este email já está associado a outra conta",
+        "EmailSignin": "Não foi possível enviar email de verificação",
+        "CredentialsSignin": "Email ou senha incorretos",
+        "SessionRequired": "Você precisa estar autenticado",
+        "Default": "Erro inesperado durante autenticação"
+      }
+    },
+    "signOut": {
+      "confirm": "Tem certeza que deseja sair?",
+      "success": "Você saiu com sucesso"
+    }
+  },
+  "footer": {
+    "tagline": "Controle financeiro inteligente com IA",
+    "product": {
+      "title": "Produto",
+      "features": "Recursos",
+      "pricing": "Preços",
+      "security": "Segurança",
+      "integrations": "Integrações"
+    },
+    "company": {
+      "title": "Empresa",
+      "about": "Sobre Nós",
+      "blog": "Blog",
+      "careers": "Carreiras",
+      "press": "Imprensa"
+    },
+    "support": {
+      "title": "Suporte",
+      "help": "Central de Ajuda",
+      "docs": "Documentação",
+      "api": "API",
+      "contact": "Contato"
+    },
+    "legal": {
+      "title": "Legal",
+      "privacy": "Privacidade",
+      "terms": "Termos de Uso",
+      "cookies": "Cookies",
+      "licenses": "Licenças"
+    },
+    "newsletter": {
+      "title": "Newsletter",
+      "description": "Receba dicas e novidades sobre finanças",
+      "placeholder": "Seu email",
+      "button": "Inscrever",
+      "success": "Inscrição realizada com sucesso!"
+    },
+    "copyright": "© 2025 Finance AI. Todos os direitos reservados.",
+    "madeWith": "Feito com",
+    "in": "em"
   },
   "dashboard": {
     "title": "Meu Dashboard",
@@ -23,50 +175,25 @@
     "sessionInfo": "Sua sessão está protegida e criptografada"
   },
   "errors": {
-    "notFound": {
+    "404": {
       "title": "Página não encontrada",
-      "description": "A página que você está procurando não existe ou foi movida.",
+      "description": "A página que você está procurando não existe ou foi movida",
       "actions": {
-        "goHome": "Ir para Home",
-        "goBack": "Voltar"
-      },
-      "supportText": {
-        "prefix": "Se você acredita que isso é um erro,",
-        "link": "entre em contato com o suporte"
+        "home": "Ir para Home",
+        "back": "Voltar",
+        "support": "entre em contato com o suporte",
+        "supportPrefix": "Se você acredita que isso é um erro"
       }
     },
-    "serverError": {
+    "500": {
       "title": "Algo deu errado",
-      "description": "Desculpe, ocorreu um erro inesperado.",
-      "devMode": {
-        "label": "Erro (modo desenvolvimento):"
-      },
+      "description": "Desculpe, ocorreu um erro inesperado",
+      "devError": "Erro (modo desenvolvimento)",
       "actions": {
-        "tryAgain": "Tentar novamente",
-        "goHome": "Voltar para Home"
-      },
-      "supportText": {
-        "prefix": "Se o problema persistir,",
-        "link": "entre em contato com o suporte"
+        "retry": "Tentar novamente",
+        "home": "Voltar para Home",
+        "support": "Se o problema persistir, entre em contato com o suporte"
       }
-    }
-  },
-  "health": {
-    "status": {
-      "ok": "OK",
-      "error": "Erro"
-    },
-    "fields": {
-      "status": "Status",
-      "version": "Versão",
-      "environment": "Ambiente",
-      "timestamp": "Data/Hora"
-    },
-    "environments": {
-      "development": "Desenvolvimento",
-      "production": "Produção",
-      "preview": "Preview",
-      "unknown": "Desconhecido"
     }
   }
 }

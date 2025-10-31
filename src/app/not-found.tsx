@@ -1,9 +1,12 @@
+"use client";
+
 import { ArrowLeft, FileQuestion, Home } from "lucide-react";
 import Link from "next/link";
 import { useTranslations } from "next-intl";
+import { Button } from "@/components/ui/button";
 
 export default function NotFound() {
-  const t = useTranslations("errors.notFound");
+  const t = useTranslations("errors.404");
 
   return (
     <div className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-b from-background to-muted px-4">
@@ -27,24 +30,23 @@ export default function NotFound() {
             className="inline-flex items-center justify-center gap-2 rounded-lg bg-primary px-6 py-3 font-medium text-primary-foreground transition-colors hover:bg-primary/90"
           >
             <Home className="h-4 w-4" />
-            {t("actions.goHome")}
+            {t("actions.home")}
           </Link>
 
-          <button
-            type="button"
+          <Button
             onClick={() => window.history.back()}
             className="inline-flex items-center justify-center gap-2 rounded-lg border border-input bg-background px-6 py-3 font-medium transition-colors hover:bg-accent hover:text-accent-foreground"
           >
             <ArrowLeft className="h-4 w-4" />
-            {t("actions.goBack")}
-          </button>
+            {t("actions.back")}
+          </Button>
         </div>
 
         <div className="mt-12 text-sm text-muted-foreground">
           <p>
-            {t("supportText.prefix")}{" "}
-            <Link href="/support" className="underline hover:text-foreground">
-              {t("supportText.link")}
+            Se você acredita que isso é um erro,{" "}
+            <Link href="/contact" className="underline hover:text-foreground">
+              {t("actions.support")}
             </Link>
             .
           </p>

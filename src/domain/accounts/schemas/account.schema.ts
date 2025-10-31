@@ -1,10 +1,10 @@
-import { z } from 'zod';
+import { uidSchema } from "@lib/validation/common.schema";
 import {
   accountTypeEnum,
   cardBrandEnum,
   currencyEnum,
-} from './enums';
-import { uidSchema } from './common.schema';
+} from "@lib/validation/enums";
+import { z } from "zod";
 
 export const accountBenefitsSchema = z.object({
   airline: z.string().optional(),
@@ -25,10 +25,13 @@ export const createAccountSchema = z.object({
   userId: uidSchema,
   name: z.string().min(2),
   accountType: accountTypeEnum,
-  currency: currencyEnum.default('BRL'),
+  currency: currencyEnum.default("BRL"),
   icon: z.string().optional(),
   issuer: z.string().optional(),
-  last4: z.string().regex(/^\d{2,4}$/, 'Use 2–4 dígitos finais').optional(),
+  last4: z
+    .string()
+    .regex(/^\d{2,4}$/, "Use 2–4 dígitos finais")
+    .optional(),
   cardBrand: cardBrandEnum.optional(),
   benefits: accountBenefitsSchema.optional(),
   billing: accountBillingSchema.optional(),

@@ -12,7 +12,7 @@ export interface UpdateAiSessionDTO {
 export interface CreateAiMessageDTO {
   userId: string;
   sessionId: string;
-  role: 'user' | 'assistant' | 'tool';
+  role: "user" | "assistant" | "tool";
   content: string;
   createdAt: number; // ts
 }

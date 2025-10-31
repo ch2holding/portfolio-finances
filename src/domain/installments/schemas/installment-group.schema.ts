@@ -1,5 +1,9 @@
-import { z } from 'zod';
-import { uidSchema, tsSchema, centsSchema } from './common.schema';
+import {
+  centsSchema,
+  tsSchema,
+  uidSchema,
+} from "@lib/validation/common.schema";
+import { z } from "zod";
 
 export const createInstallmentGroupSchema = z.object({
   userId: uidSchema,
@@ -11,8 +15,11 @@ export const createInstallmentGroupSchema = z.object({
   feesTotal: z.number().int().optional(),
   cardAccountId: z.string().min(1),
   firstDueDate: tsSchema,
-  statementStartMonth: z.string().regex(/^\d{6}$/).optional(),
-  plan: z.enum(['no_interest', 'interest', 'revolving']).optional(),
+  statementStartMonth: z
+    .string()
+    .regex(/^\d{6}$/)
+    .optional(),
+  plan: z.enum(["no_interest", "interest", "revolving"]).optional(),
   notes: z.string().optional(),
 });
 

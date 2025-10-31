@@ -1,43 +1,43 @@
-import { BaseEntity } from './common';
+import type { BaseEntity } from "@/types/common";
 
 export type InvestmentAccountKind =
-  | 'brokerage'
-  | 'savings'
-  | 'pension'
-  | 'crypto_exchange';
+  | "brokerage"
+  | "savings"
+  | "pension"
+  | "crypto_exchange";
 
 export type AssetType =
-  | 'savings'
-  | 'cdb'
-  | 'lci'
-  | 'lca'
-  | 'tesouro'
-  | 'fundo'
-  | 'fii'
-  | 'acao'
-  | 'etf'
-  | 'cripto'
-  | 'outro';
+  | "savings"
+  | "cdb"
+  | "lci"
+  | "lca"
+  | "tesouro"
+  | "fundo"
+  | "fii"
+  | "acao"
+  | "etf"
+  | "cripto"
+  | "outro";
 
 export interface InvestmentAccount extends BaseEntity {
   name: string;
   kind: InvestmentAccountKind;
   institution?: string;
-  currency: 'BRL';
+  currency: "BRL";
 }
 
 export interface InvestmentTransaction extends BaseEntity {
   invAccountId: string;
   date: number;
   operation:
-    | 'buy'
-    | 'sell'
-    | 'deposit'
-    | 'withdraw'
-    | 'apply'
-    | 'redeem'
-    | 'rebalance'
-    | 'fee';
+    | "buy"
+    | "sell"
+    | "deposit"
+    | "withdraw"
+    | "apply"
+    | "redeem"
+    | "rebalance"
+    | "fee";
   assetType: AssetType;
   tickerOrName: string;
   quantity?: number;
@@ -55,7 +55,7 @@ export interface InvestmentPosition extends BaseEntity {
   principal?: number;
   avgPrice?: number;
   currentValue?: number;
-  riskLevel?: 'low' | 'medium' | 'high';
+  riskLevel?: "low" | "medium" | "high";
   tags?: string[];
 }
 
@@ -64,7 +64,7 @@ export interface InvestmentEarning extends BaseEntity {
   date: number;
   assetType: AssetType;
   tickerOrName: string;
-  type: 'dividend' | 'jcp' | 'yield' | 'coupon' | 'interest';
+  type: "dividend" | "jcp" | "yield" | "coupon" | "interest";
   grossAmount: number;
   taxAmount: number;
   netAmount: number;

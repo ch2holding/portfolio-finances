@@ -2,15 +2,26 @@ export interface CreateAccountDTO {
   userId: string;
   name: string;
   accountType:
-    | 'card_credit' | 'card_debit' | 'prepaid'
-    | 'wallet_cash' | 'bank_checking' | 'bank_savings';
-  currency: 'BRL';
+    | "card_credit"
+    | "card_debit"
+    | "prepaid"
+    | "wallet_cash"
+    | "bank_checking"
+    | "bank_savings";
+  currency: "BRL";
   icon?: string;
   issuer?: string;
   last4?: string;
   cardBrand?:
-    | 'visa' | 'mastercard' | 'amex' | 'elo' | 'hipercard'
-    | 'vr' | 'sodexo' | 'alelo' | 'other';
+    | "visa"
+    | "mastercard"
+    | "amex"
+    | "elo"
+    | "hipercard"
+    | "vr"
+    | "sodexo"
+    | "alelo"
+    | "other";
   benefits?: {
     airline?: string;
     lounge?: boolean;
@@ -31,15 +42,26 @@ export interface UpdateAccountDTO {
   userId: string;
   name?: string;
   accountType?:
-    | 'card_credit' | 'card_debit' | 'prepaid'
-    | 'wallet_cash' | 'bank_checking' | 'bank_savings';
-  currency?: 'BRL';
+    | "card_credit"
+    | "card_debit"
+    | "prepaid"
+    | "wallet_cash"
+    | "bank_checking"
+    | "bank_savings";
+  currency?: "BRL";
   icon?: string;
   issuer?: string;
   last4?: string;
   cardBrand?:
-    | 'visa' | 'mastercard' | 'amex' | 'elo' | 'hipercard'
-    | 'vr' | 'sodexo' | 'alelo' | 'other';
+    | "visa"
+    | "mastercard"
+    | "amex"
+    | "elo"
+    | "hipercard"
+    | "vr"
+    | "sodexo"
+    | "alelo"
+    | "other";
   benefits?: {
     airline?: string;
     lounge?: boolean;

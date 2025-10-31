@@ -1,11 +1,15 @@
-import { z } from 'zod';
+import {
+  centsSchema,
+  tsSchema,
+  uidSchema,
+} from "@lib/validation/common.schema";
 import {
   accountTypeEnum,
   cardBrandEnum,
-  transactionTypeEnum,
   installmentStatusEnum,
-} from './enums';
-import { uidSchema, tsSchema, centsSchema } from './common.schema';
+  transactionTypeEnum,
+} from "@lib/validation/enums";
+import { z } from "zod";
 
 export const createTransactionSchema = z.object({
   userId: uidSchema,
@@ -26,7 +30,10 @@ export const createTransactionSchema = z.object({
   installmentCount: z.number().int().min(1).optional(),
   purchaseDate: tsSchema.optional(),
   dueDate: tsSchema.optional(),
-  statementMonth: z.string().regex(/^\d{6}$/, 'Use yyyymm').optional(),
+  statementMonth: z
+    .string()
+    .regex(/^\d{6}$/, "Use yyyymm")
+    .optional(),
   interestAmount: z.number().int().optional(),
   feesAmount: z.number().int().optional(),
   status: installmentStatusEnum.optional(),

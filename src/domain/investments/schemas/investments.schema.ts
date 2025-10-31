@@ -1,17 +1,17 @@
-import { z } from 'zod';
+import { tsSchema, uidSchema } from "@lib/validation/common.schema";
 import {
-  invAccountKindEnum,
   assetTypeEnum,
-} from './enums';
-import { uidSchema, tsSchema, centsSchema } from './common.schema';
-import { currencyEnum } from './enums';
+  currencyEnum,
+  invAccountKindEnum,
+} from "@lib/validation/enums";
+import { z } from "zod";
 
 export const createInvestmentAccountSchema = z.object({
   userId: uidSchema,
   name: z.string().min(2),
   kind: invAccountKindEnum,
   institution: z.string().optional(),
-  currency: currencyEnum.default('BRL'),
+  currency: currencyEnum.default("BRL"),
 });
 
 export const updateInvestmentAccountSchema = createInvestmentAccountSchema
@@ -23,7 +23,14 @@ export const createInvestmentTransactionSchema = z.object({
   invAccountId: z.string().min(1),
   date: tsSchema,
   operation: z.enum([
-    'buy','sell','deposit','withdraw','apply','redeem','rebalance','fee',
+    "buy",
+    "sell",
+    "deposit",
+    "withdraw",
+    "apply",
+    "redeem",
+    "rebalance",
+    "fee",
   ]),
   assetType: assetTypeEnum,
   tickerOrName: z.string().min(1),
@@ -34,9 +41,10 @@ export const createInvestmentTransactionSchema = z.object({
   notes: z.string().optional(),
 });
 
-export const updateInvestmentTransactionSchema = createInvestmentTransactionSchema
-  .partial()
-  .extend({ id: z.string().min(1), userId: uidSchema });
+export const updateInvestmentTransactionSchema =
+  createInvestmentTransactionSchema
+    .partial()
+    .extend({ id: z.string().min(1), userId: uidSchema });
 
 export const createInvestmentPositionSchema = z.object({
   userId: uidSchema,
@@ -47,7 +55,7 @@ export const createInvestmentPositionSchema = z.object({
   principal: z.number().int().optional(),
   avgPrice: z.number().int().optional(),
   currentValue: z.number().int().optional(),
-  riskLevel: z.enum(['low','medium','high']).optional(),
+  riskLevel: z.enum(["low", "medium", "high"]).optional(),
   tags: z.array(z.string()).optional(),
 });
 
@@ -61,11 +69,14 @@ export const createInvestmentEarningSchema = z.object({
   date: tsSchema,
   assetType: assetTypeEnum,
   tickerOrName: z.string().min(1),
-  type: z.enum(['dividend','jcp','yield','coupon','interest']),
+  type: z.enum(["dividend", "jcp", "yield", "coupon", "interest"]),
   grossAmount: z.number().int(),
   taxAmount: z.number().int(),
   netAmount: z.number().int(),
-  competenceMonth: z.string().regex(/^\d{6}$/).optional(),
+  competenceMonth: z
+    .string()
+    .regex(/^\d{6}$/)
+    .optional(),
 });
 
 export const updateInvestmentEarningSchema = createInvestmentEarningSchema

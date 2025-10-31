@@ -1,7 +1,7 @@
-import { BaseEntity } from '../../../types/common';
-import { AccountType, CardBrand } from '@domain/accounts/types/account';
+import type { AccountType, CardBrand } from "@domain/accounts/types/account";
+import type { BaseEntity } from "../../../types/common";
 
-export type TransactionType = 'expense' | 'income' | 'transfer';
+export type TransactionType = "expense" | "income" | "transfer";
 
 export interface Transaction extends BaseEntity {
   accountId: string;
@@ -24,7 +24,7 @@ export interface Transaction extends BaseEntity {
   statementMonth?: string;
   interestAmount?: number;
   feesAmount?: number;
-  status?: 'scheduled' | 'posted' | 'paid' | 'canceled' | 'refunded';
+  status?: "scheduled" | "posted" | "paid" | "canceled" | "refunded";
 
   llm?: {
     classified: boolean;
