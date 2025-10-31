@@ -257,6 +257,85 @@ finance-ai/
 
 ---
 
+## 🔧 Troubleshooting
+
+### Health Check
+
+A aplicação possui um endpoint de health check para verificar se está funcionando:
+
+```bash
+curl http://localhost:3000/health
+```
+
+**Resposta esperada:**
+```json
+{
+  "status": "ok",
+  "version": "1.0.0",
+  "env": "development",
+  "timestamp": "2025-10-31T10:30:00.000Z"
+}
+```
+
+### Smoke Test
+
+Execute o smoke test para verificar a saúde da aplicação:
+
+```bash
+npm run smoke
+```
+
+Este script valida:
+- ✅ Health endpoint responde corretamente
+- ✅ Status é "ok"
+- ✅ Estrutura da resposta está correta
+- ✅ Timestamp é válido
+
+### Problemas Comuns
+
+#### ❌ Erro: "Missing required environment variable"
+
+**Solução:**
+1. Verifique se o arquivo `.env.local` existe
+2. Confirme que todas as variáveis obrigatórias estão preenchidas
+3. Reinicie o servidor: `npm run dev`
+
+#### ❌ Erro: "Firebase Private Key inválida"
+
+**Solução:**
+1. Certifique-se de que a chave mantém as quebras de linha (`\n`)
+2. Coloque a chave entre aspas duplas no `.env.local`
+3. Não remova os marcadores `BEGIN/END PRIVATE KEY`
+
+#### ❌ Página 404 aparece em rotas que deveriam existir
+
+**Solução:**
+1. Verifique se a rota está definida em `app/`
+2. Reinicie o servidor de desenvolvimento
+3. Limpe o cache: `rm -rf .next && npm run dev`
+
+#### ❌ Erro genérico (500) aparece
+
+**Solução:**
+1. Verifique os logs do console para detalhes
+2. Em desenvolvimento, a página de erro mostra detalhes
+3. Verifique se todas as variáveis de ambiente estão corretas
+4. Rode o smoke test: `npm run smoke`
+
+#### ❌ SSR Safety Error em código de domínio
+
+**Solução:**
+O código de domínio deve ser SSR-safe (sem `window`, `document`, `localStorage`).
+
+Execute a verificação:
+```bash
+npm run check:ssr
+```
+
+Se encontrar erros, mova o código dependente de browser para componentes UI.
+
+---
+
 ## 📖 Documentação Adicional
 
 - [ADR-0001: Arquitetura Base](./docs/ADR-0001-arquitetura-base.md)

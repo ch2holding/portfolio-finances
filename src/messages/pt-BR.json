@@ -21,5 +21,52 @@
     "lastLogin": "Último acesso",
     "now": "Agora",
     "sessionInfo": "Sua sessão está protegida e criptografada"
+  },
+  "errors": {
+    "notFound": {
+      "title": "Página não encontrada",
+      "description": "A página que você está procurando não existe ou foi movida.",
+      "actions": {
+        "goHome": "Ir para Home",
+        "goBack": "Voltar"
+      },
+      "supportText": {
+        "prefix": "Se você acredita que isso é um erro,",
+        "link": "entre em contato com o suporte"
+      }
+    },
+    "serverError": {
+      "title": "Algo deu errado",
+      "description": "Desculpe, ocorreu um erro inesperado.",
+      "devMode": {
+        "label": "Erro (modo desenvolvimento):"
+      },
+      "actions": {
+        "tryAgain": "Tentar novamente",
+        "goHome": "Voltar para Home"
+      },
+      "supportText": {
+        "prefix": "Se o problema persistir,",
+        "link": "entre em contato com o suporte"
+      }
+    }
+  },
+  "health": {
+    "status": {
+      "ok": "OK",
+      "error": "Erro"
+    },
+    "fields": {
+      "status": "Status",
+      "version": "Versão",
+      "environment": "Ambiente",
+      "timestamp": "Data/Hora"
+    },
+    "environments": {
+      "development": "Desenvolvimento",
+      "production": "Produção",
+      "preview": "Preview",
+      "unknown": "Desconhecido"
+    }
   }
 }

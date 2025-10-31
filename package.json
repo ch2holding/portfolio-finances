@@ -8,6 +8,7 @@
     "start": "next start",
     "lint": "biome check",
     "format": "biome format --write",
+    "test": "npm run check:ssr && npm run smoke:ci",
     "prepare": "husky install",
     "biome:check": "biome check .",
     "biome:check:write": "biome check --write .",
@@ -24,7 +25,10 @@
     "analyze:server": "set ANALYZE=true && set BUNDLE_ANALYZE=server && pnpm build",
     "analyze:client": "set ANALYZE=true && set BUNDLE_ANALYZE=client && pnpm build",
     "analyze:both": "set ANALYZE=true && set BUNDLE_ANALYZE=both && pnpm build",
-    "analyze:report": "node scripts/analyze-bundle.js"
+    "analyze:report": "node scripts/analyze-bundle.js",
+    "check:ssr": "node scripts/check-ssr-safe.js",
+    "smoke": "node scripts/smoke-test.js",
+    "smoke:ci": "start-server-and-test dev http://localhost:3000/health smoke"
   },
   "dependencies": {
     "@radix-ui/react-dropdown-menu": "^2.1.16",

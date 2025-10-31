@@ -10,7 +10,6 @@ const withBundleAnalyzer = bundleAnalyzer({
 const nextConfig: NextConfig = {
   // ==================== PERFORMANCE ====================
   reactStrictMode: true,
-  swcMinify: true,
   compress: true,
 
   // ==================== IMAGES ====================
